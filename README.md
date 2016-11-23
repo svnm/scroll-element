@@ -17,8 +17,14 @@ Scroll-Element has 2 functions, `scrollToElement` scrolls to an element within a
 ```js
 import { scrollToElement, scrollWindowToElement } from 'scroll-element'
 
+/* scroll the window to your target element, duration and offset optional */
 let targetElement = document.getElementById('my-item')
 scrollWindowToElement(targetElement, 1000, -100)
+
+/* scroll the overflow container element to your target element, duration and offset optional */
+let containerElement = document.getElementById('my-container')
+let targetElement = document.getElementById('my-item')
+scrollToElement(containerElement, targetElement, 1000, -100)
 ```
 
 ## Params
