@@ -1,4 +1,4 @@
-import { scrollToElement, scrollWindowToElement } from '../../lib/index'
+import { scrollToElement, scrollWindowToElement } from '../lib/index'
 
 import ReactDOM from 'react-dom'
 import React, { Component, PropTypes } from 'react'
@@ -23,7 +23,7 @@ class TestComponent extends Component {
   getItems() {
     let items = []
     for(var i = 0; i < 20; i++) {
-      items.push({ name: 'An item', description: 'A description of an item' })
+      items.push({ name: `Item number ${i}`, description: 'A description of an item' })
     }
     return items
   }
@@ -43,11 +43,20 @@ class TestComponent extends Component {
     return cards
   }
 
+  handleClick() {
+    let targetElement = document.getElementById('item-6')
+    scrollWindowToElement(targetElement, 1000, -100)
+  }
+
   render () {
-    let containerStyle = { paddingTop: '2rem', paddingBottom: '2rem', background: 'rgb(248, 245, 236)', position: 'relative' }
+    let containerStyle = { fontFamily: 'Helvetica Neue', paddingTop: '2rem', paddingBottom: '2rem', background: '#22354c', position: 'relative' }
+    let buttonStyle = { margin: '1rem', background: '#fff', color: '#22354c', padding: '8px', fontSize: '18px', width: '300px', borderRadius: '10px', textAlign: 'center', textTransform: 'uppercase' }
 
     return (
       <div style={containerStyle}>
+        <button style={buttonStyle} onClick={::this.handleClick}>
+          Click to ScrollTo...
+        </button>
         { this.renderCards() }
       </div>
     )

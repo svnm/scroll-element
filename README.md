@@ -4,40 +4,22 @@ Scroll to an element
 
 [![npm version](https://badge.fury.io/js/scroll-element.svg)](https://badge.fury.io/js/scroll-element)
 
+![](https://raw.githubusercontent.com/StevenIseki/scroll-element/master/example/screenshot.gif)
+
 ## Install
 
 `npm install scroll-element --save`
 
 ## Usage
 
-Check out the [example](https://github.com/StevenIseki/scroll-element/blob/master/example) for more info.
+Scroll-Element has 2 functions, `scrollToElement` scrolls to an element within a container div with overflow scroll. `scrollWindowToElement` just scrolls the window to the element. Check out the [example](https://github.com/StevenIseki/scroll-element/blob/master/example) for more info.
 
-```jsx
+```js
 import { scrollToElement, scrollWindowToElement } from 'scroll-element'
-import ReactDOM from 'react-dom'
-import React, { Component, PropTypes } from 'react'
 
-class TestComponent extends Component {
-
-  componentDidMount() {
-    this.loadItems()
-  }
-
-  render () {
-    return (
-      <div>
-        { this.renderCards() }
-      </div>
-    )
-  }
-}
-
-ReactDOM.render(<TestComponent />, document.getElementById('root'))
+let targetElement = document.getElementById('my-item')
+scrollWindowToElement(targetElement, 1000, -100)
 ```
-
-scrollToElement(containerElement, targetElement, duration, offset)
-
-scrollWindowToElement(targetElement, duration, offset)
 
 ## Params
 
@@ -45,21 +27,17 @@ scrollWindowToElement(targetElement, duration, offset)
 
 The dom element to scroll to.
 
-- `containerElement`
-
-The dom element to scroll, set this to overflow.
-
 - `duration`
 
-Duration of time to scroll to the element in milliseconds.
+Duration of time to scroll to the element in milliseconds. (Optional)
 
 - `offset`
 
-An additional offset in pixels from the element being scrolled to.
+An additional offset in pixels from the element being scrolled to. (Optional)
 
-- `onScroll()`
+- `containerElement`
 
-A function to call when the loader item has been scrolled to.
+The dom element to scroll, set this to overflow. (Only used for scrollWindowToElement function)
 
 ## Development
     npm install
